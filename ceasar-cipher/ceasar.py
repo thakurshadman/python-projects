@@ -1,4 +1,3 @@
-from email import message
 from typing import Union
 
 def encode_or_decode()->Union[str,bool]:
