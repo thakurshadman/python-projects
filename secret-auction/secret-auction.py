@@ -44,8 +44,10 @@ def prompt_other_participants()->bool:
         try:
             is_there_more_participants = input('Are there any other bidders?(y / n): ')
             if is_there_more_participants == 'y':
+                clear()
                 return True
             elif is_there_more_participants == 'n':
+                clear()
                 return False
             else:
                 raise ValueError('Invalid Input!\n')
@@ -61,4 +63,14 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
-        
+
+def get_highest_bidder(bidders):
+    highest_bid = max(bidders, key=bidders.get)
+    return highest_bid
+    
+def secretAuction():
+    Greeting()
+    names_and_bids = {}
+    name = prompt_name()
+    names_and_bids[f"{name}"] = prompt_bid()
+    
