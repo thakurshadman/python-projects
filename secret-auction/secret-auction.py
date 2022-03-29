@@ -64,13 +64,24 @@ def clear():
     else:
         _ = system('clear')
 
-def get_highest_bidder(bidders):
+def get_highest_bidder(bidders)->str:
     highest_bid = max(bidders, key=bidders.get)
     return highest_bid
+
+def declare_winner(winner,bidders_dict):
+    print(f'The winner is {winner} with a bid of ${bidders_dict[winner]}.')
+     
     
 def secretAuction():
     Greeting()
     names_and_bids = {}
     name = prompt_name()
     names_and_bids[f"{name}"] = prompt_bid()
+    while prompt_other_participants():
+        name = prompt_name()
+        names_and_bids[f"{name}"] = prompt_bid()
+    winner = get_highest_bidder(names_and_bids)
+    declare_winner(winner, names_and_bids)
     
+if __name__ == "__main__":
+    secretAuction()
