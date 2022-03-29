@@ -1,8 +1,9 @@
+from email import message
 from typing import Union
 
 def encode_or_decode()->Union[str,bool]:
     usersChoice = input('Type "decode" to to decrypt a message, type "encode" to to decrypt a message: ')
-    if usersChoice.lower() == 'decode' or usersChoice.lower == 'encode':
+    if usersChoice.lower() == 'decode' or usersChoice.lower()== 'encode':
         return usersChoice
     else:
         return False
@@ -10,7 +11,7 @@ def encode_or_decode()->Union[str,bool]:
 def prompt_message()->str:
     return input('Enter your message: ')
 
-def promt_shift_number()->int:
+def prompt_shift_number()->int:
     return int(input('Enter the shift number: ')) 
 
 def encode_message(message: str, shift: int)->str:
@@ -36,6 +37,21 @@ def decode_message(encoded_msg: str, shift: int)->str:
     return ''.join(decoded_msg)
     
 
-print(encode_message('ABCD',26))
-print(decode_message(encode_message('ABCD',26),26))
-
+def ceasar_cipher():
+    users_choice = encode_or_decode()
+    if users_choice =='encode':
+        users_message = prompt_message()
+        shift_number = prompt_shift_number()
+        encoded_message = encode_message(users_message,shift_number)
+        print(encoded_message)
+    elif users_choice == 'decode':
+        users_encoded_message = prompt_message()
+        shift_number = prompt_shift_number()
+        decoded_message = decode_message(users_encoded_message,shift_number)
+        print(decoded_message)
+    else:
+        print('INVALID INPUT!')
+        
+if __name__ == "__main__":
+    ceasar_cipher()
+        
