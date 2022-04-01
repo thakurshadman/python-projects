@@ -31,8 +31,15 @@ def get_hand_total(hand,cards_dict)-> int:
     if ace_counter == 0:
         return current_total
     
-    difference = 21 - current_total
-    
-    # example hand [7 A A] dif=14
+    current_total += (11*ace_counter)
+    while current_total > 21:
+        if ace_counter == 0:
+            break
+        else:
+            ace_counter -= 1
+            current_total -= 10
+    return current_total
+        
+     
     
             
