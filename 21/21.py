@@ -72,7 +72,7 @@ def play_game():
     else:
         player_choice = promptHit()
     if player_choice:
-        players_hand.append(init_dealing(deck,1))
+        players_hand.extend(init_dealing(deck,1))
         player_score = get_hand_total(players_hand,deck)
         print(f'Your Hand: {players_hand} Current Total: {player_score}' )
         
